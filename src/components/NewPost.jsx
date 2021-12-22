@@ -9,10 +9,6 @@ class NewPost extends Component {
         body: "",
     }
 
-    componentDidUpdate() {
-        
-    }
-
     savePostHandler = () =>{
         const newpost = {
             title: this.state.title,
