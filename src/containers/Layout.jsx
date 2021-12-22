@@ -2,35 +2,45 @@ import React , {Component} from 'react';
 import axios from 'axios';
 import AllPosts from '../components/AllPosts';
 import FullPost from '../components/FullPost';
-
+import NewPost from '../components/NewPost';
 
 class Layout extends Component {
     state = {
-        posts: []
+        miniPosts: [],
+        selectedPostId: null,
     }
 
     componentDidMount() {
-        axios.get('https://jsonplaceholder.typicode.com/users/1/posts').then(response => {
-            this.setState({ posts: response.data });
-            console.log(response);
-        })
+        axios.get('https://jsonplaceholder.typicode.com/posts').then(response => {
+            this.setState({ miniPosts: response.data.slice(0, 12) });
+            console.log(this.state.miniPosts);
+        });
     }
-    render () {
-    const posts = this.state.posts.map(post => {
-            return <AllPosts title={post.title} body={post.body}/>
-    });
 
-    return(
+    postSelectedHandler = (id) => {
+        this.setState({ selectedPostId: id });
+        console.log(id);
+        console.log(this.state.selectedPostId);
+    }
+
+    render () {
+            const miniPosts = this.state.miniPosts.map(post => {
+            return <AllPosts key={post.id} title={post.title} body={post.body} clicked={() => this.postSelectedHandler(post.id)}/>
+                });
+
+        return(
+        
         <>
         <section className='grid grid-cols-4'>
-            {posts}
+            {miniPosts}
         </section>
-        
-        <FullPost/>
 
+        <FullPost id={this.state.selectedPostId}/>
+        
+        <NewPost/>
         </>
-    )
-}
+        )
+    }
 }
 
 export default Layout;
