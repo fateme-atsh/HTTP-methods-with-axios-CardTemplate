@@ -37,7 +37,6 @@ class FullPost extends Component {
             const comments = this.state.comments.map(comment => {
                 return <Comments key={comment.id} postId={comment.postId} body={comment.body} name={comment.name}/>
                 });
-            // const edit = () => <NewPost/>
             
             let post = (
             <section className='grid grid-cols-1 m-10 shadow-xl p-10 text-justify bg-gray-100'>
