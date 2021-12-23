@@ -55,8 +55,8 @@ class FullPost extends Component {
                     {comments}
                 </div>
                 <div>
-                <button type='submit' value='Delete Post' onClick={this.deletePostHandler} className='bg-rose-700 text-white w-32 border-rose-900 rounded-md py-3 font-bold m-3 hover:bg-rose-800 hover:cursor-pointer'/>
-                <button type='submit' value='Edit Post' className='bg-gray-700 text-white w-32 border-rose-900 rounded-md py-3 font-bold hover:bg-gray-800 hover:cursor-pointer'/>
+                <input type='submit' value='Delete Post' onClick={this.deletePostHandler} className='bg-rose-700 text-white w-32 border-rose-900 rounded-md py-3 font-bold m-3 hover:bg-rose-800 hover:cursor-pointer'/>
+                <input type='submit' value='Edit Post' className='bg-gray-700 text-white w-32 border-rose-900 rounded-md py-3 font-bold hover:bg-gray-800 hover:cursor-pointer'/>
                 </div>
             </section>
 
